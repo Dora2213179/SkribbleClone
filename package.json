@@ -1,0 +1,13 @@
+{
+  "name": "skribbl-clone-root",
+  "version": "1.0.0",
+  "description": "Root package.json to automatically deploy the server on Railway",
+  "scripts": {
+    "install": "cd server && npm install",
+    "build": "cd server && npm run setup && npm run build",
+    "start": "cd server && npm start"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
