@@ -3,6 +3,7 @@ services:
   - type: web
     name: skribbl-backend
     env: node
+    plan: free
     rootDir: server
     buildCommand: npm install && npm run setup && npm run build
     startCommand: npm start
