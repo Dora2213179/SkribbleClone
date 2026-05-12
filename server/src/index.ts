@@ -30,7 +30,7 @@ app.get('/health', (_req, res) => {
 new SocketHandler(io);
 
 server.listen(config.port, () => {
-  console.log(`\n🎨 Skribbl Clone Server running on port ${config.port}`);
+  console.log(`\nSkribbl Clone Server running on port ${config.port}`);
   console.log(`   Environment: ${config.nodeEnv}`);
   console.log(`   CORS origins: ${Array.isArray(config.corsOrigins) ? config.corsOrigins.join(', ') : config.corsOrigins}\n`);
 });
