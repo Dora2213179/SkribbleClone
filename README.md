@@ -1,48 +1,99 @@
-# 🎨 Skribbl.io Clone
+# Skribbl.io Clone
 
-A full-stack, real-time multiplayer drawing and guessing game inspired by Skribbl.io. Built with React (Vite), Tailwind CSS v4, Zustand, Node.js, and Socket.io.
+A real-time multiplayer drawing and guessing game — built from scratch, fully deployed, and playable right now.
+
+**Live Demo → [skribble-clone-two.vercel.app](https://skribble-clone-two.vercel.app)**
+
+---
+
+## What is this?
+
+I built a full-stack clone of Skribbl.io — a game where one player draws a word and others race to guess it. The goal was to understand how real-time communication works at a deeper level, beyond just tutorials.
+
+The trickiest part was keeping every player's canvas perfectly in sync — strokes, undo actions, and clears all had to propagate instantly across all clients with zero lag.
+
+---
+
+## Tech Stack
+
+| Layer | Tech |
+|---|---|
+| Frontend | React 18, TypeScript, Vite |
+| Styling | Tailwind CSS v4 |
+| State Management | Zustand |
+| Backend | Node.js, Express, TypeScript |
+| Real-time | Socket.io |
+| Deployment | Vercel (frontend) + Render (backend) |
+
+---
 
 ## Features
-- **Real-Time Multiplayer**: Create private rooms and invite friends with links/codes.
-- **Synchronized Drawing Canvas**: Tools include Brush, Eraser, Fill (Bucket), Undo, Clear, and color palette.
-- **Game Mechanics**: Turn-based drawing, time-based scoring, close-guess detection, and automatic hints.
-- **Dynamic UI**: Popups for word choice, real-time leaderboards, and podium at game over.
 
-## Live Deployment
-Live Frontend URL: `[Insert Your Render/Vercel URL Here]`
-Live Backend URL: `[Insert Your Render Backend URL Here]`
+- **Private Rooms** — create a room and share the code with friends
+- **Synchronized Canvas** — brush, eraser, fill (bucket), undo, and clear — all synced in real time
+- **Game Loop** — turn-based drawing, configurable rounds and draw time
+- **Scoring** — faster guesses earn more points; close guesses get a nudge
+- **Hints** — letters reveal automatically as time runs out
+- **Live Leaderboard** — scores update in real time after every round
+- **Podium Screen** — winner announced at game end
 
-## Local Setup
+---
 
-### 1. Start the Backend Server
+## Run Locally
+
+### 1. Clone the repo
+
+```bash
+git clone https://github.com/Dora2213179/SkribbleClone.git
+cd SkribbleClone
+```
+
+### 2. Start the backend
+
 ```bash
 cd server
 npm install
 npm run dev
 ```
 
-### 2. Start the Frontend Client
+### 3. Start the frontend
+
 ```bash
 cd client
 npm install
 npm run dev
 ```
-Then visit `http://localhost:5174/`
 
-## Deployment Instructions (Render.com)
+Visit `http://localhost:5173` — you'll need two browser tabs to test multiplayer.
 
-This repository includes a `render.yaml` file to make deployment to Render extremely easy via Blueprint.
+---
 
-1. **Push your code to GitHub.**
-2. Go to [Render.com](https://render.com/) and create a new account / log in.
-3. Click on **"Blueprints"** (or New > Blueprint).
-4. Connect your GitHub account and select this repository.
-5. Render will automatically detect the `render.yaml` file and create two services: `skribbl-backend` and `skribbl-frontend`.
-6. **IMPORTANT STEP**: 
-   - Once the deployment starts, go to your **Render Dashboard**.
-   - Find the URL for the `skribbl-backend` service (e.g., `https://skribbl-backend-xxxx.onrender.com`).
-   - Go to your `skribbl-frontend` service settings -> **Environment**.
-   - Edit the `VITE_SERVER_URL` variable to be your actual backend URL.
-   - Click "Save" and then **"Manual Deploy > Clear build cache & deploy"** on the frontend service.
+## Project Structure
 
-Now your game is fully accessible online!
+```
+SkribbleClone/
+├── client/          # React frontend
+│   ├── src/
+│   │   ├── components/   # DrawingCanvas, ChatPanel, Lobby, etc.
+│   │   ├── pages/        # Home, Room
+│   │   ├── store/        # Zustand global state
+│   │   ├── hooks/        # Socket event listeners
+│   │   └── types/        # Shared TypeScript types
+└── server/          # Node.js backend
+    └── src/
+        ├── classes/      # Game, Player, Room logic
+        ├── socket/       # Socket.io event handlers
+        └── config/       # Environment config
+```
+
+---
+
+## Deployment
+
+- Frontend deployed on **Vercel** — auto-deploys on every push to `main`
+- Backend deployed on **Render** — free tier (may take ~30s to wake up on first visit)
+
+Environment variable required on Vercel:
+```
+VITE_SERVER_URL=https://skribbleclone-sbuf.onrender.com
+```
