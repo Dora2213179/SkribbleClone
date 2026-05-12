@@ -1,4 +1,4 @@
-import { ReactNode } from 'react';
+import type { ReactNode } from 'react';
 import { Toaster } from 'react-hot-toast';
 import { useSocketEvents } from '../../hooks/useSocketEvents';
 

@@ -1,6 +1,6 @@
 import { create } from 'zustand';
 import { io, Socket } from 'socket.io-client';
-import type { PlayerData, RoomData, RoomSettings, GameState, ChatMessage, StrokeData, GamePhase } from '../types';
+import type { PlayerData, RoomData, RoomSettings, GameState, ChatMessage, StrokeData } from '../types';
 
 interface AppState {
   // Socket Connection

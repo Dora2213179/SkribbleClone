@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate, useSearchParams } from 'react-router-dom';
+import {  useSearchParams } from 'react-router-dom';
 import { useAppStore } from '../store/useAppStore';
 
 const AVATAR_COLORS = [
@@ -19,7 +19,7 @@ export function Home() {
   const [selectedAvatar, setSelectedAvatar] = useState(Math.floor(Math.random() * 20));
   
   const { socket, connect, setUserInfo, isConnected } = useAppStore();
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
 
   
